@@ -4,7 +4,7 @@ from mapper.model import db,Student
 
 student_bp = Blueprint("student",__name__,url_prefix = "/student")
 
-allow_field = ["id","name","class_name"]
+allow_field = ["name","class_name"]
 @student_bp.route("",methods = ["POST"])
 def add_student_route() :
     data = request.get_json()
@@ -49,12 +49,3 @@ def delete_student_route(id) :
             delete_data[field] = data[field]
     result = delete_student(id,delete_data)
     return f"数据删除成功：{result}"
-
-
-
-
-
-
-
-
-

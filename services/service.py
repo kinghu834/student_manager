@@ -3,12 +3,11 @@ from mapper.model import db,Score,Student
 
 def add_student(filter_data) :
     student = Student()
-    for field in ["id","name","class_name"] :
+    for field in ["name","class_name"] :
         setattr(student,field,filter_data[field])
     db.session.add(student)
     db.session.commit()
     return [{
-        "id" : student.id,
         "name" : student.name,
         "class_name" : student.class_name
     }]

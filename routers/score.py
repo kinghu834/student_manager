@@ -44,13 +44,3 @@ def get_score_avg_route(student_id) :
         return "id错误,请重新输入"
     result = get_score_avg(student_id)
     return f"成绩统计结果：{result}"
-
-
-
-
-
-
-
-
-
-
