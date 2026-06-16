@@ -8,9 +8,8 @@ class Student(db.Model) :
      class_name = db.Column(db.String(50))
 
 class Score(db.Model) :
-      id = db.Column(db.Integer, primary_key=True)
-      student_id = db.Column(db.Integer, db.ForeignKey('student.id'))
-      subject = db.Column(db.String(50))
+      student_id = db.Column(db.Integer, db.ForeignKey('student.id'), primary_key=True)
+      subject = db.Column(db.String(50), primary_key=True)
       score = db.Column(db.Integer)
 
 class User(UserMixin, db.Model):

@@ -49,3 +49,4 @@ def delete_student_route(id) :
             delete_data[field] = data[field]
     result = delete_student(id,delete_data)
     return f"数据删除成功：{result}"
+

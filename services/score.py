@@ -31,13 +31,16 @@ def get_score(student_id) :
         "score_list" : score_list
     }
 
-def update_score(student_id,update_data) :
-    message = Score.query.get(student_id)
-    for field in ["subject","score"] :
-        setattr(message,field,update_data[field])
+def update_score(student_id, subject, update_data) :
+    score_record = Score.query.filter_by(student_id=student_id, subject=subject).first()
+    if not score_record:
+        return {"success": False, "message": "成绩记录不存在"}
+    for field in ["score"] :
+        setattr(score_record, field, update_data[field])
     db.session.commit()
     return {
-        "update_data" : update_data
+        "success": True,
+        "update_data": update_data
     }
 def get_score_avg(student_id) :
     scores_list = Score.query.filter_by(student_id = student_id).all()

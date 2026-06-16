@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask
 from mapper.model import db,Student,User
 from routers import register_routes
 from flask_login import LoginManager
@@ -30,11 +30,8 @@ register_routes(app)
 
 @app.route("/")
 def index() :
-    return render_template("index.html")
-
-@app.route("/home")
-def home() :
     return "欢迎进入学生信息管理系统"
+
 if __name__ == "__main__" :
     app.run(debug = True)
     

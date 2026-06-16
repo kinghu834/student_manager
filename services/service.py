@@ -34,14 +34,17 @@ def update_student(id,update_data) :
     }
     
 
-def delete_student(id,delete_data) :
+def delete_student(id, delete_data):
+    # 先删除该学生的所有成绩记录
+    Score.query.filter_by(student_id=id).delete()
+    # 再删除学生记录
     student = Student.query.get(id)
     db.session.delete(student)
     db.session.commit()
     return {
-        "success" : True,
-        "message" : "学生信息删除成功",
+        "success": True,
+        "message": "学生信息及关联成绩删除成功",
         "id" : student.id,
-        "delete_data" : delete_data
+        "delete_data": delete_data
     }
     
